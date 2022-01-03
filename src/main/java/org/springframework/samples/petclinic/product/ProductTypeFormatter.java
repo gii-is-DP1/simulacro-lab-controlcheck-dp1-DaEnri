@@ -25,13 +25,11 @@ public class ProductTypeFormatter implements Formatter<ProductType>{
 
     @Override
     public ProductType parse(String text, Locale locale) throws ParseException {
-    	Collection<Product> allProducts = this.pService.getAllProducts();
-		for (Product p : allProducts) {
-			if (p.getProductType().getName().equals(text)) {
-				return p.getProductType();
-			}
+    	if (this.pService.getProductType(text) == null) {
+    		throw new ParseException("type not found: " + text, 0);
+		}else {
+			return this.pService.getProductType(text);
 		}
-		throw new ParseException("type not found: " + text, 0);
     }
     
 }
