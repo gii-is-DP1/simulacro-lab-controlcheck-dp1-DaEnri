@@ -21,11 +21,11 @@ public class ProductService {
     }
 
     public List<Product> getProductsCheaperThan(double price) {
-        return null;
+        return productRepository.getProductsCheaperThan(price);
     }
 
     public ProductType getProductType(String typeName) {
-        return null;
+        return productRepository.getProductType(typeName);
     }
 
     public Product save(Product p){
